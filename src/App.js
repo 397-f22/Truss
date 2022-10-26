@@ -1,30 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useDbData } from './utilities/firebase';
+import MessagesPage from "./components/MessagesPage";
+import IssuesPage from "./components/IssuesPage";
 
-
-function App() {
+const App = () => {
   const [data, error] = useDbData("/");
+
+  if (error) return <h1>Error loading data: {error.toString()}</h1>;
+  if (data === undefined) return <h1>Loading data...</h1>;
+  if (!data) return <h1>No data found</h1>;
+
   console.log("data:", data)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element=<IssuesPage issues={data.issues.slice(1)} /> />
+          <Route path="/issues/:id" element=<MessagesPage messages={data.messages.slice(1)} users={data.users.slice(1)} /> />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
