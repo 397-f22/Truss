@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import MessagesPage from "./components/MessagesPage";
 import IssuesPage from "./components/IssuesPage";
 
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
 
@@ -15,16 +17,30 @@ const App = () => {
   if (data === undefined) return <h1>Loading data...</h1>;
   if (!data) return <h1>No data found</h1>;
 
-  console.log("data:", data)
-
   return (
     <>
-      <Header selectedType={selectedType} setSelectedType={setSelectedType} />
+      <Header
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element=<IssuesPage issues={data.issues.slice(1)} /> />
-            <Route path="/issues/:id" element=<MessagesPage messages={data.messages.slice(1)} users={data.users.slice(1)} /> />
+            <Route
+              path="/"
+              element=<IssuesPage
+                        selectedType={selectedType}
+                        issues={data.issues.slice(1)}
+                      />
+            />
+            <Route
+              path="/issues/:id"
+              element=<MessagesPage
+                        selectedType={selectedType}
+                        messages={data.messages.slice(1)}
+                        users={data.users.slice(1)}
+                      />
+            />
           </Routes>
         </BrowserRouter>
       </div>

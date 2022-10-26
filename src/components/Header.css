@@ -5,6 +5,7 @@
   align-items: center;
   height: 50px;
   background-color: rgba(127, 255, 212, 0.5);
+  border-bottom: 1px solid black;
 }
 
 .issues-type {

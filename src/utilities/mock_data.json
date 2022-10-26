@@ -26,22 +26,27 @@
   "issues":
   {
     "1": {
+      "issue_id": "1",
       "contents": "Fill out CATME form",
       "status": "Backlog"
     },
     "2": {
+      "issue_id": "2",
       "contents": "Create UI for issues page",
       "status": "Todo"
     },
     "3": {
+      "issue_id": "3",
       "contents": "Complete React tutorial",
       "status": "Todo"
     },
     "4": {
+      "issue_id": "4",
       "contents": "Decide on app idea for project #2",
       "status": "Done"
     },
     "5": {
+      "issue_id": "5",
       "contents": "Create 4-panel storyboard",
       "status": "Done"
     }

@@ -1,0 +1,9 @@
+.issues-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.issues-list-container > div {
+  margin-top: 15px;
+}

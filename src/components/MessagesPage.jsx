@@ -1,11 +1,7 @@
 import { useParams } from "react-router-dom";
 
-const MessagesPage = ({ messages }) => {
-
+const MessagesPage = ({ selectedType, messages }) => {
   const { id } = useParams();
-
-  console.log("id:", id);
-  console.log("messages:", messages)
 
   return (
     <div>

@@ -1,0 +1,66 @@
+.issue-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  width: 500px;
+  height: 150px;
+  background-color: lightgray;
+  border: 1px solid black;
+}
+
+.issue-number {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.issue-contents {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.move-issue-text {
+  margin-bottom: 10px;
+}
+
+.issue-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.issue-buttons-container > div:not(:last-child) {
+  margin-right: 15px;
+}
+
+.issue-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.issue-button:hover {
+  opacity: 0.8;
+}
+
+.issue-button:active {
+  opacity: 0.6;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.issue-button-backlog {
+  background-color: rgb(207, 92, 92);
+}
+
+.issue-button-todo {
+  background-color: rgb(204, 204, 107);
+}
+
+.issue-button-done {
+  background-color: rgb(54, 121, 54);
+}
