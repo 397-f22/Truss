@@ -1,0 +1,63 @@
+{
+  "users":
+  {
+    "1": {
+      "uid": "1",
+      "first_name": "Christopher",
+      "last_name": "Song",
+      "display_name": "Chris",
+      "email": "chrissong2023@u.northwestern.edu"
+    },
+    "2": {
+      "uid": "2",
+      "first_name": "Stephen",
+      "last_name": "Curry",
+      "display_name": "Steph",
+      "email": "stephcurry@gsw.com"
+    },
+    "3": {
+      "uid": "3",
+      "first_name": "Lebron",
+      "last_name": "James",
+      "display_name": "Lebron",
+      "email": "lebron_james@tradewestbrook.com"
+    }
+  },
+  "issues":
+  {
+    "1": {
+      "contents": "Fill out CATME form",
+      "status": "Backlog"
+    },
+    "2": {
+      "contents": "Create UI for issues page",
+      "status": "Todo"
+    },
+    "3": {
+      "contents": "Complete React tutorial",
+      "status": "Todo"
+    },
+    "4": {
+      "contents": "Decide on app idea for project #2",
+      "status": "Done"
+    },
+    "5": {
+      "contents": "Create 4-panel storyboard",
+      "status": "Done"
+    }
+  },
+  "messages": {
+    "1": {
+      "message_id": "1",
+      "uid": "1",
+      "issue_id": "2",
+      "contents": "Did anyone take a look at my mockup yet?"
+    },
+    "2": {
+      "message_id": "1",
+      "uid": "2",
+      "issue_id": "2",
+      "contents": "No, not yet - is it in the Slack channel?"
+    }
+  }
+}

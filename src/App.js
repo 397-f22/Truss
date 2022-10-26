@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { useDbData } from './utilities/firebase';
+
 
 function App() {
+  const [data, error] = useDbData("/");
+  console.log("data:", data)
+
   return (
     <div className="App">
       <header className="App-header">
