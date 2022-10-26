@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: rgba(127, 255, 212, 0.5);
+}
+
+.issues-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 75px;
+  cursor: pointer;
+}
+
+.issues-type:hover:not(.issues-type-active) {
+  text-decoration: underline;
+}
+
+.issues-type:not(:first-child):not(:last-child) {
+  margin: 0 75px;
+}
+
+.issues-type-active {
+  background-color: lightgray;
+  border: 1px solid black;
+  cursor: auto;
+}
