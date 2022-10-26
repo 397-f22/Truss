@@ -18,33 +18,30 @@ const App = () => {
   if (!data) return <h1>No data found</h1>;
 
   return (
-    <>
-      <Header
-        selectedType={selectedType}
-        setSelectedType={setSelectedType}
-      />
-      <div>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element=<IssuesPage
-                        selectedType={selectedType}
-                        issues={data.issues.slice(1)}
-                      />
-            />
-            <Route
-              path="/issues/:id"
-              element=<MessagesPage
-                        selectedType={selectedType}
-                        messages={data.messages.slice(1)}
-                        users={data.users.slice(1)}
-                      />
-            />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </>
+    <div>
+      <BrowserRouter>
+        <Header
+          selectedType={selectedType}
+          setSelectedType={setSelectedType}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element=<IssuesPage
+                      selectedType={selectedType}
+                      issues={data.issues.slice(1)}
+                    />
+          />
+          <Route
+            path="/issues/:id"
+            element=<MessagesPage
+                      messages={data.messages.slice(1)}
+                      users={data.users.slice(1)}
+                    />
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
