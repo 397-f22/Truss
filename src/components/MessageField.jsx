@@ -2,7 +2,7 @@ import './MessageField.css'
 import { useDbUpdate } from '../utilities/firebase'
 import { useParams } from 'react-router-dom'
 
-const MessageField = ({change}) => {
+const MessageField = ({change, scrollBool, setScrollBool }) => {
     // need to generate an id (use hash function)
     // get issue ID from url
 
@@ -23,10 +23,9 @@ const MessageField = ({change}) => {
             uid: userID
         });
         document.getElementById('text-form').reset();
-        let scroll_to_bottom = document.getElementById('text-chat');
-	    scroll_to_bottom.scrollTop = scroll_to_bottom.scrollHeight;
-        console.log(scroll_to_bottom)
 
+        let scroll_to_bottom = document.getElementById('text-chat');
+	      scroll_to_bottom.scrollTop = scroll_to_bottom.scrollHeight;
     }
 
 
