@@ -11,13 +11,11 @@ const MessagesPage = ({ messages, users }) => {
     <div>
       <div>
         {
-          filteredMessages.map((message, id) => {
-            return (
+          filteredMessages.map((message, id) => (
             <div key={id} className="message">
               <div>{findUserDisplayName(message.uid)}</div>
               <div>{message.contents}</div>
-            </div>);
-          })
+            </div>))
         }
       </div>
       <div className="message-field">

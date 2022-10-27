@@ -1,5 +1,5 @@
 import './MessageField.css'
-import { useDbUpdate, setData } from '../utilities/firebase'
+import { useDbUpdate } from '../utilities/firebase'
 import { useParams } from 'react-router-dom'
 
 const MessageField = ({change}) => {

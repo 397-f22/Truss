@@ -49,6 +49,7 @@ export const useDbUpdate = (path) => {
   return [updateData, result];
 }
 
+// setData: easier to use, not sure if it only works with existing database paths
 export const setData = (path, value) => (
   set(ref(database, path), value)
 );
