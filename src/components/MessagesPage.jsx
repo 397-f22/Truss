@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import "./MessagesPage.css";
 import MessageField from "./MessageField"; './MessageField'
+import { useFormData } from "../utilities/useformdata";
 const MessagesPage = ({ messages, users }) => {
   const { id } = useParams();
 
   const findUserDisplayName = (uid) => users.filter(user => user.uid === uid)[0].display_name;
   const filteredMessages = messages.filter(message => message.issue_id === id);
-
+  const [state, change] = useFormData();
   return (
     <div>
       <div>
@@ -20,7 +21,7 @@ const MessagesPage = ({ messages, users }) => {
         }
       </div>
       <div className="message-field">
-        <MessageField />
+        <MessageField change={change}/>
       </div>
     </div>
   );

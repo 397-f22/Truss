@@ -6,7 +6,7 @@ const types = ["backlog", "todo", "done"];
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const Issue = ({ issue, selectedType }) => (
-
+  
   <div className="issue-container">
     <Link to={`/issues/${issue.issue_id}`}>
       <ChatBubble />

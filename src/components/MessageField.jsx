@@ -1,11 +1,11 @@
 import './MessageField.css'
-const MessageField = () => {
+const MessageField = ({change}) => {
 
 
     return (
-        <div className='field-container'>
-            <input className='field' placeholder='Start Typing...' />
-        </div>
+        <form className='field-container'>
+            <input className='field' placeholder='Start Typing...' onChange={change} />
+        </form>
     );
 }
 
