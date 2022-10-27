@@ -3,3 +3,8 @@
   flex-direction: column;
   margin-top: 10px;
 }
+
+.message-field {
+  position: fixed;
+  bottom: 10px;
+}

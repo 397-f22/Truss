@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./MessagesPage.css";
-
+import MessageField from "./MessageField"; './MessageField'
 const MessagesPage = ({ messages, users }) => {
   const { id } = useParams();
 
@@ -9,14 +9,19 @@ const MessagesPage = ({ messages, users }) => {
 
   return (
     <div>
-      {
-        filteredMessages.map((message, id) => (
-          <div key={id} className="message">
-            <div>{findUserDisplayName(message.uid)}</div>
-            <div>{message.contents}</div>
-          </div>
-        ))
-      }
+      <div>
+        {
+          filteredMessages.map((message, id) => (
+            <div key={id} className="message">
+              <div>{findUserDisplayName(message.uid)}</div>
+              <div>{message.contents}</div>
+            </div>
+          ))
+        }
+      </div>
+      <div className="message-field">
+        <MessageField />
+      </div>
     </div>
   );
 };
