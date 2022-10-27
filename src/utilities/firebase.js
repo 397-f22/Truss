@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, update } from 'firebase/database';
+import { getDatabase, onValue, ref, update, set } from 'firebase/database';
 import { useEffect, useState, useCallback } from 'react';
 
 const firebaseConfig = {
@@ -23,7 +23,7 @@ export const useDbData = (path) => {
 
   useEffect(() => (
     onValue(ref(database, path), (snapshot) => {
-     setData( snapshot.val() );
+      setData(snapshot.val());
     }, (error) => {
       setError(error);
     })
@@ -42,11 +42,15 @@ export const useDbUpdate = (path) => {
   const [result, setResult] = useState();
   const updateData = useCallback((value) => {
     update(ref(database, path), value)
-    .then(() => setResult(makeResult()))
-    .catch((error) => setResult(makeResult(error)))
+      .then(() => setResult(makeResult()))
+      .catch((error) => setResult(makeResult(error)))
   }, [database, path]);
 
   return [updateData, result];
 }
+
+export const setData = (path, value) => (
+  set(ref(database, path), value)
+);
 
 
