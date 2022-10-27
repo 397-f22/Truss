@@ -23,6 +23,9 @@ const MessageField = ({change}) => {
             uid: userID
         });
         document.getElementById('text-form').reset();
+        let scroll_to_bottom = document.getElementById('text-chat');
+	    scroll_to_bottom.scrollTop = scroll_to_bottom.scrollHeight;
+        console.log(scroll_to_bottom)
 
     }
 
