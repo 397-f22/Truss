@@ -1,15 +1,15 @@
 .field {
-    width: 75vw;
-    margin-left: 5vw;
-    /* margin-right: 5vw; */
+  width: 75vw;
+  margin-left: 5vw;
 }
 
 .field-container {
-margin: auto;
+  margin: auto;
+  height: 50px;
 }
 
 .submit {
-    background-color: rgb(202, 255, 237);
-    border: 1px solid rgb(0, 0, 0);
-    width: 15vw;
+  background-color: rgb(202, 255, 237);
+  border: 1px solid rgb(0, 0, 0);
+  width: 15vw;
 }

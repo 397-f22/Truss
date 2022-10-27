@@ -14,6 +14,5 @@
 
 .text-chat {
   overflow-y: scroll;
-  height: 100%;
-  padding-bottom: 60px;
+  height: calc(100vh - 100px);
 }
