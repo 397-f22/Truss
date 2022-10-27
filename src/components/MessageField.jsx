@@ -8,15 +8,13 @@ const MessageField = ({change}) => {
 
     const issueID = Object.values(useParams())[0];
     const time = new Date();
-    const userID = 1;
+    const userID = "1";
     const messageID = `${userID}${time.getTime()}`
 
-    //console.log(issueID);
     const [update, result] = useDbUpdate(`/messages/${messageID}`)
 
     const submit = (e) => {
         e.preventDefault();
-        console.log(e.target[0].value);
         update({
             contents: e.target[0].value,
             date: time.toJSON(),

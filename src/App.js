@@ -27,17 +27,17 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element=<IssuesPage
+            element={<IssuesPage
                       selectedType={selectedType}
                       issues={data.issues.slice(1)}
-                    />
+                    />}
           />
           <Route
             path="/issues/:id"
-            element=<MessagesPage
-                      messages={data.messages.slice(1)}
+            element={<MessagesPage
+                      messages={data.messages}
                       users={data.users.slice(1)}
-                    />
+                    />}
           />
         </Routes>
       </BrowserRouter>
