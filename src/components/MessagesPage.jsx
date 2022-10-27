@@ -9,7 +9,7 @@ const MessagesPage = ({ messages, users }) => {
   const [state, change] = useFormData();
   return (
     <div>
-      <div>
+      <div className="text-chat">
         {
           filteredMessages.map((message, id) => (
             <div key={id} className="message">

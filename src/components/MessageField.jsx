@@ -22,13 +22,16 @@ const MessageField = ({change}) => {
             message_id: messageID,
             uid: userID
         });
+        document.getElementById('text-form').reset();
+
     }
 
 
 
     return (
-        <form onSubmit={submit} className='field-container'>
+        <form id='text-form' onSubmit={submit} className='field-container'>
             <input className='field' placeholder='Start Typing...' onChange={change} />
+            <button className='submit' type="submit">Submit</button>
         </form>
     );
 }
