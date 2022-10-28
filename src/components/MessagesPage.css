@@ -1,7 +1,7 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 10px;
 }
 
 .message-field {
@@ -15,4 +15,17 @@
 .text-chat {
   overflow-y: scroll;
   height: calc(100vh - 100px);
+}
+
+.user-name {
+  padding-left: 4px;
+  font-weight: 700;
+}
+
+.message-text {
+  margin-top: 5px;
+  padding: 8px;
+  background-color: rgb(226, 226, 226);
+  border-radius: 15px;
+  width: fit-content;
 }

@@ -1,15 +1,22 @@
 .field {
-  width: 75vw;
-  margin-left: 5vw;
+  width: calc(95vw - 90px);
+  border-radius: 10px;
+  padding: 5px;
+  height: 20px;
 }
 
 .field-container {
-  margin: auto;
+  display: flex;
+  margin: 0px;
   height: 50px;
+  justify-content: space-around;
+  width: 100vw;
 }
 
 .submit {
   background-color: rgb(202, 255, 237);
   border: 1px solid rgb(0, 0, 0);
-  width: 15vw;
+  width: 90px;
+  border-radius: 10px;
+  height: 30px;
 }

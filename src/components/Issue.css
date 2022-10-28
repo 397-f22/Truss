@@ -7,8 +7,9 @@
   padding: 5px 0;
   width: 80vw;
   height: 150px;
-  background-color: lightgray;
+  background-color: rgb(239, 239, 239);
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 .issue-top-row {
@@ -25,6 +26,8 @@
 .issue-contents {
   font-size: 18px;
   margin-bottom: 20px;
+  max-width: 65%;
+  text-align: center;
 }
 
 .move-issue-text {
@@ -48,6 +51,8 @@
   height: 30px;
   border: 1px solid black;
   cursor: pointer;
+  color: white;
+  border-radius: 10px;
 }
 
 .issue-button:hover {
@@ -64,7 +69,8 @@
 }
 
 .issue-button-todo {
-  background-color: rgb(204, 204, 107);
+  background-color: rgb(255, 195, 30);
+  color: black;
 }
 
 .issue-button-done {
