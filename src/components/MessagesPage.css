@@ -28,4 +28,5 @@
   background-color: rgb(226, 226, 226);
   border-radius: 15px;
   width: fit-content;
+  box-shadow: -2px 2px 2px rgb(207, 207, 207);
 }
