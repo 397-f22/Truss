@@ -1,6 +1,6 @@
 import { useDbUpdate } from '../utilities/firebase'
 import { useState } from 'react';
-
+import './IssueCreator.css'
 const issueTypes = ["Todo","Done","Backlog"]
 
 const IssueCreator = ({ closeModal, change }) => {
@@ -37,7 +37,7 @@ const IssueCreator = ({ closeModal, change }) => {
             ))
           }
         </select>
-          <button className='isue-submit' type="submit">Submit</button>
+          <button className='issue-submit' type="submit">Submit</button>
       </form>
     );
 };
