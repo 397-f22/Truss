@@ -1,7 +1,7 @@
 import { useDbUpdate } from '../utilities/firebase'
 import { useState } from 'react';
 import './IssueCreator.css'
-const issueTypes = ["Todo", "Done", "Backlog"]
+const issueTypes = ["Backlog","Todo", "Done"]
 
 const IssueCreator = ({ closeModal, change }) => {
     // need to generate an id (use hash function)
