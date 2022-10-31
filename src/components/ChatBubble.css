@@ -3,15 +3,17 @@
   top: 10px;
   right: 10px;
   text-align: center;
-  background-color: black;
-  color: white;
-  font-size: 24px;
+  /* background-color: black; */
+  color: black;
+  font-size: 35px;
   font-weight: bold;
   height: 35px;
   width: 40px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   cursor: pointer;
+
 }
+
 
 .chat-bubble:hover {
   opacity: 0.8;

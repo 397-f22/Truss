@@ -15,6 +15,7 @@ const MessageField = ({ change }) => {
 
     const submit = (e) => {
         e.preventDefault();
+        if(!e.target[0].value) return
         update({
             contents: e.target[0].value,
             date: time.toJSON(),
@@ -23,6 +24,7 @@ const MessageField = ({ change }) => {
             uid: userID
         });
         document.getElementById('text-form').reset();
+        document.getElementById('field').focus();
 
         const textChat = document.getElementById('text-chat');
         setTimeout(() => {
@@ -32,7 +34,7 @@ const MessageField = ({ change }) => {
 
     return (
       <form id='text-form' onSubmit={submit} className='field-container'>
-          <input className='field' placeholder='Start Typing...' onChange={change} />
+          <input id= "field" className='field' placeholder='Start Typing...' onChange={change} />
           <button className='submit' type="submit">Submit</button>
       </form>
     );

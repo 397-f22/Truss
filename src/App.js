@@ -31,7 +31,7 @@ const App = () => {
               path="/"
               element={<IssuesPage
                         selectedType={selectedType}
-                        issues={data.issues.slice(1)}
+                        issues={Object.values(data.issues)}
                       />}
             />
             <Route

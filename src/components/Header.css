@@ -31,7 +31,8 @@
 }
 
 .issues-type-active {
-  background-color: lightgray;
+  background-color: rgb(239, 239, 239);
   border: 1px solid black;
   cursor: auto;
+  border-radius: 10px;
 }

@@ -15,8 +15,8 @@ const MessagesPage = ({ messages, users }) => {
         {
           filteredMessages.map((message, id) => (
             <div key={id} className="message">
-              <div>{findUserDisplayName(message.uid)}</div>
-              <div>{message.contents}</div>
+              <div className="user-name">{findUserDisplayName(message.uid)}</div>
+              <div className="message-text">{message.contents}</div>
             </div>))
         }
       </div>
