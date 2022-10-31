@@ -6,7 +6,6 @@ const IssueModal = ({ children, open, close }) => (
   <div
     className={`modal ${open ? 'modal-show' : ''}`}
     tabIndex="-1"
-    role="dialog"
     onClick={(evt) => { if (evt.target === evt.currentTarget) close(); }}
   >
     <div className="modal-dialog" role="document">
