@@ -1,9 +1,11 @@
 import "./ChatBubble.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
 const ChatBubble = () => (
 
   <div className="chat-bubble">
-    <i className='fas fa-comment-dots'></i>
+    <FontAwesomeIcon icon={faCommentDots} />
   </div>
 );
 
