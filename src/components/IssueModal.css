@@ -1,7 +1,14 @@
 .modal {
-    display: block;
+
+    display: block !important;
     visibility: hidden;
   }
+  
+  .modal-show {
+    visibility:visible;
+    background-color: rgba(169, 169, 169, 0.8);
+    transition: opacity 0.2s linear; 
+  } 
   
   .modal-content  {
     opacity: 0; 
@@ -15,9 +22,3 @@
   .modal-header {
     margin-left: auto;
   }
-
-  .modal-show {
-    visibility:visible;
-    background-color: rgba(169, 169, 169, 0.8);
-    transition: opacity 0.2s linear; 
-  } 

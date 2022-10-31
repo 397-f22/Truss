@@ -12,7 +12,8 @@ const IssuesPage = ({ selectedType, issues }) => {
   const [state, change] = useFormData();
 
   const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false)
+  const closeModal = () => setOpen(false);
+  const issueCount = issues.length;
   return (
     <div>
       <div className="issues-list-container">
@@ -20,9 +21,9 @@ const IssuesPage = ({ selectedType, issues }) => {
           <Issue key={id} issue={issue} selectedType={selectedType} />
         ))}
       </div>
-      <button type='button'  className='btn btn-outline-dark' onClick={() => openModal()}>Add</button>
+      <button className='btn btn-outline-dark' onClick={openModal}>Add</button>
       <IssueModal open={open} close={closeModal}>
-        <IssueCreator change={change} closeModal={closeModal} />
+        <IssueCreator change={change} closeModal={closeModal} issueID = {issueCount} />
       </IssueModal>
     </div>
   );
