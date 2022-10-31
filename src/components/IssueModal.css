@@ -5,6 +5,7 @@
   }
   
   .modal-show {
+    display: block !important;
     visibility:visible;
     background-color: rgba(169, 169, 169, 0.8);
     transition: opacity 0.2s linear; 
@@ -15,6 +16,7 @@
   }
   
   .modal-show .modal-content  {
+    
     opacity: 1; 
     transition: 0.2s linear; 
   }

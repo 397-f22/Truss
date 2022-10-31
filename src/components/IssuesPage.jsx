@@ -23,7 +23,7 @@ const IssuesPage = ({ selectedType, issues }) => {
       </div>
       <button className='btn btn-outline-dark' onClick={openModal}>Add</button>
       <IssueModal open={open} close={closeModal}>
-        <IssueCreator change={change} closeModal={closeModal} issueID = {issueCount} />
+        <IssueCreator change={change} closeModal={closeModal} issueID = {issueCount + 1} />
       </IssueModal>
     </div>
   );

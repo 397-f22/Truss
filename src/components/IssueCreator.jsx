@@ -19,7 +19,7 @@ const IssueCreator = ({ closeModal, change, issueID}) => {
         e.preventDefault();
         update({
             contents: e.target[0].value,
-            issue_id: issueID + 1,
+            issue_id: issueID,
             status: e.target[1].value,
         });
         document.getElementById('issue-form').reset();
@@ -28,7 +28,7 @@ const IssueCreator = ({ closeModal, change, issueID}) => {
     };
 
     return (
-      <form id='issue-form' onSubmit={submit} className='field-container'>
+      <form id='issue-form' onSubmit={submit} >
           <input className='issue-field' placeholder='Enter Task Name' onChange={change} />
           <select className="select-bar" defaultValue={issueType} onChange={(e) => setIssueType(e.target.value)}>
           {
