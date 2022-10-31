@@ -1,26 +1,33 @@
 .modal {
+  display: block !important;
+  visibility: hidden;
+}
 
-    display: block !important;
-    visibility: hidden;
-  }
-  
-  .modal-show {
-    display: block !important;
-    visibility:visible;
-    background-color: rgba(169, 169, 169, 0.8);
-    transition: opacity 0.2s linear; 
-  } 
-  
-  .modal-content  {
-    opacity: 0; 
-  }
-  
-  .modal-show .modal-content  {
-    
-    opacity: 1; 
-    transition: 0.2s linear; 
-  }
-  
-  .modal-header {
-    margin-left: auto;
-  }
+.modal-show {
+  display: block !important;
+  visibility:visible;
+  background-color: rgba(169, 169, 169, 0.8);
+  transition: opacity 0.2s linear;
+}
+
+.modal-header {
+  width: 100%;
+}
+
+.issue-modal-header {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.modal-content  {
+  opacity: 0;
+}
+
+.modal-show .modal-content  {
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+.modal-header {
+  margin-left: auto;
+}

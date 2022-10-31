@@ -9,9 +9,7 @@
   font-weight: bold;
   height: 35px;
   width: 40px;
-  /* border-radius: 50%; */
   cursor: pointer;
-
 }
 
 
@@ -21,5 +19,4 @@
 
 .chat-bubble:active {
   opacity: 0.6;
-  box-shadow: 5px 5px 5px gray;
 }

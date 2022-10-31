@@ -5,6 +5,8 @@
 }
 
 .message-field {
+  display: flex;
+  align-items: center;
   position: fixed;
   bottom: 0px;
   height: 40px;
@@ -14,7 +16,7 @@
 
 .text-chat {
   overflow-y: scroll;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 110px);
 }
 
 .user-name {

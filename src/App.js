@@ -24,6 +24,7 @@ const App = () => {
         <Header
           selectedType={selectedType}
           setSelectedType={setSelectedType}
+          issues={Object.values(data.issues)}
         />
         <div className="page-content">
           <Routes>
