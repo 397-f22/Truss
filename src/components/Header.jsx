@@ -22,7 +22,9 @@ const Header = ({ selectedType, setSelectedType, issues }) => {
         <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} />
       </IssueModal>
       <div className="header">
-        <div className="app-title">Truss</div>
+        <Link className="app-title-link" to="/">
+          <div className="app-title">Truss</div>
+        </Link>
         <div className="issues-type-container">
           {types.map((type, id) => (
             <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to="/" key={id}>
