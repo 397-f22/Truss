@@ -38,6 +38,7 @@ const App = () => {
             <Route
               path="/issues/:id"
               element={<MessagesPage
+                        issues={data.issues}
                         messages={data.messages}
                         users={data.users.slice(1)}
                       />}
