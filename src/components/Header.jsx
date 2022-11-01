@@ -12,6 +12,7 @@ const Header = ({
   selectedType,
   setSelectedType,
   issues,
+  projects,
   projectID,
   setProjectID
 }) => {
@@ -30,7 +31,10 @@ const Header = ({
       </IssueModal>
       <div className="header">
         <Link className="app-title-link" to="/">
-          <div onClick={onClick} className="app-title">Truss</div>
+          <div
+            onClick={onClick}
+            className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
+          </div>
         </Link>
         {!projectID ? <></> :
           <>

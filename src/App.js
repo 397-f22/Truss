@@ -28,6 +28,7 @@ const App = () => {
           selectedType={selectedType}
           setSelectedType={setSelectedType}
           issues={Object.values(data.issues)}
+          projects={Object.values(data.projects)}
           projectID={projectID}
           setProjectID={setProjectID}
         />
@@ -36,7 +37,7 @@ const App = () => {
             <Route
               path="/"
               element={<ProjectPage
-                projects={data.projects}
+                projects={Object.values(data.projects)}
                 projectIDs={projectIDs}
                 setProjectID={setProjectID}
               />}

@@ -4,7 +4,7 @@ import Project from "./Project";
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const ProjectPage = ({ projects, projectIDs, setProjectID }) => {
-  const filteredProjects = Object.values(projects).filter(project => projectIDs.includes(project.project_id));
+  const filteredProjects = projects.filter(project => projectIDs.includes(project.project_id));
 
   return (
     <div>
