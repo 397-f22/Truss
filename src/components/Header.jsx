@@ -8,7 +8,7 @@ import { useFormData } from "../utilities/useformdata";
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const Header = ({ selectedType, setSelectedType, issues }) => {
+const Header = ({ selectedType, setSelectedType, issues, projectID }) => {
   const [open, setOpen] = useState(false);
   const [state, change] = useFormData();
 
@@ -27,7 +27,7 @@ const Header = ({ selectedType, setSelectedType, issues }) => {
         </Link>
         <div className="issues-type-container">
           {types.map((type, id) => (
-            <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to="/" key={id}>
+            <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
               <div
                 id={type}
                 onClick={(e) => {
