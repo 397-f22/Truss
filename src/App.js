@@ -13,7 +13,7 @@ const projectIDs = [1001]; // hardcoded for now, will get from logged in user
 
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
-  const [projectID, setProjectID] = useState(1001);
+  const [projectID, setProjectID] = useState(0);
 
   const [data, error] = useDbData("/");
 
@@ -29,6 +29,7 @@ const App = () => {
           setSelectedType={setSelectedType}
           issues={Object.values(data.issues)}
           projectID={projectID}
+          setProjectID={setProjectID}
         />
         <div className="page-content">
           <Routes>

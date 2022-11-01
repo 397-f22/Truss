@@ -8,12 +8,19 @@ import { useFormData } from "../utilities/useformdata";
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const Header = ({ selectedType, setSelectedType, issues, projectID }) => {
+const Header = ({
+  selectedType,
+  setSelectedType,
+  issues,
+  projectID,
+  setProjectID
+}) => {
   const [open, setOpen] = useState(false);
   const [state, change] = useFormData();
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+  const onClick = () => setProjectID(0);
   const issueCount = issues.length;
 
   return (
@@ -23,25 +30,29 @@ const Header = ({ selectedType, setSelectedType, issues, projectID }) => {
       </IssueModal>
       <div className="header">
         <Link className="app-title-link" to="/">
-          <div className="app-title">Truss</div>
+          <div onClick={onClick} className="app-title">Truss</div>
         </Link>
-        <div className="issues-type-container">
-          {types.map((type, id) => (
-            <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
-              <div
-                id={type}
-                onClick={(e) => {
-                  if (type !== selectedType) {
-                    setSelectedType(e.target.id);
-                  };
-                }}
-              >
-                {capitalize(type)}
-              </div>
-            </Link>
-          ))}
-        </div>
-        <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
+        {!projectID ? <></> :
+          <>
+            <div className="issues-type-container">
+              {types.map((type, id) => (
+                <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
+                  <div
+                    id={type}
+                    onClick={(e) => {
+                      if (type !== selectedType) {
+                        setSelectedType(e.target.id);
+                      };
+                    }}
+                  >
+                    {capitalize(type)}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
+          </>
+        }
       </div>
     </>
   );
