@@ -9,7 +9,7 @@ const IssueCreator = ({ closeModal, change, issueID, issueNumber, projectID}) =>
     const [update, result] = useDbUpdate(`/issues/${issueID}`)
     const [issueType, setIssueType] = useState(issueTypes[0])
     const project_id = projectID;
-    
+
 
     const submit = (e) => {
         if(e.target[0].value === ''){}

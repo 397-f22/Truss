@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Header.css";
 import IssueModal from "./IssueModal";
+import ProjectModal from "./ProjectModal";
 import IssueCreator from "./IssueCreator";
+import ProjectCreator from "./ProjectCreator";
 import { useFormData } from "../utilities/useformdata";
 
 const types = ["backlog", "todo", "done"]
@@ -17,10 +19,14 @@ const Header = ({
   setProjectID
 }) => {
   const [open, setOpen] = useState(false);
+  const [openProject, setOpenProject] = useState(false);
   const [state, change] = useFormData();
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+  const openModalProject = () => setOpenProject(true);
+  const closeModalProject = () => setOpenProject(false);
+
   const onClick = () => setProjectID(0);
   const issueCount = issues.length;
   const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
@@ -30,6 +36,9 @@ const Header = ({
       <IssueModal open={open} close={closeModal}>
         <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} issueNumber={issueNumber + 1} projectID={projectID} />
       </IssueModal>
+      <ProjectModal open={openProject} close={closeModalProject}>
+        <ProjectCreator change={change} closeModal={closeModalProject} projectID={projects.length + 1001} />
+      </ProjectModal>
       <div className="header">
         <Link className="app-title-link" to="/">
           <div
@@ -37,8 +46,11 @@ const Header = ({
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
-        {!projectID ? <></> :
-          <>
+        {!projectID
+        ? <>
+          <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
+          </>
+        : <>
             <div className="issues-type-container">
               {types.map((type, id) => (
                 <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>

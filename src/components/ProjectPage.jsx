@@ -1,5 +1,6 @@
 import "./ProjectPage.css";
 import Project from "./Project";
+import { useParams } from "react-router-dom";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 

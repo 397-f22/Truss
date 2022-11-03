@@ -9,7 +9,7 @@ import ProjectPage from "./components/ProjectPage";
 import './App.css'
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const projectIDs = [1001]; // hardcoded for now, will get from logged in user
+// const projectIDs = [1001]; // hardcoded for now, will get from logged in user
 
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
@@ -20,6 +20,8 @@ const App = () => {
   if (error) return <h1>Error loading data: {error.toString()}</h1>;
   if (data === undefined) return <h1>Loading data...</h1>;
   if (!data) return <h1>No data found</h1>;
+
+  const projectIDs = data.users[1].project_ids;
 
   return (
     <div>

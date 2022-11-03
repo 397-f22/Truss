@@ -1,10 +1,13 @@
 import "./IssuesPage.css";
 import Issue from "./Issue";
+import { useParams } from "react-router-dom";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const IssuesPage = ({ selectedType, issues }) => {
-  const filteredIssues = issues.filter(issue => issue.status === capitalize(selectedType));
+  const { project_id } = useParams();
+
+  const filteredIssues = issues.filter(issue => issue.status === capitalize(selectedType) && issue.project_id === parseInt(project_id));
 
   return (
     <div>
