@@ -23,11 +23,12 @@ const Header = ({
   const closeModal = () => setOpen(false);
   const onClick = () => setProjectID(0);
   const issueCount = issues.length;
+  const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
 
   return (
     <>
       <IssueModal open={open} close={closeModal}>
-        <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} />
+        <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} issueNumber={issueNumber + 1} projectID={projectID} />
       </IssueModal>
       <div className="header">
         <Link className="app-title-link" to="/">

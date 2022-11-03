@@ -1,12 +1,15 @@
 import { useDbUpdate } from '../utilities/firebase'
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import "./IssueCreator.css";
 
 const issueTypes = ["Todo","Done","Backlog"]
 
-const IssueCreator = ({ closeModal, change, issueID}) => {
+const IssueCreator = ({ closeModal, change, issueID, issueNumber, projectID}) => {
     const [update, result] = useDbUpdate(`/issues/${issueID}`)
     const [issueType, setIssueType] = useState(issueTypes[0])
+    const project_id = projectID;
+    
 
     const submit = (e) => {
         if(e.target[0].value === ''){}
@@ -16,6 +19,8 @@ const IssueCreator = ({ closeModal, change, issueID}) => {
             contents: e.target[0].value,
             issue_id: issueID,
             status: e.target[1].value,
+            project_id: project_id,
+            issue_number: issueNumber
         });
         document.getElementById('issue-form').reset();
     }
