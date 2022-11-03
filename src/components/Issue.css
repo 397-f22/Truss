@@ -13,6 +13,19 @@
   border-radius: 10px;
 }
 
+.archive-button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /* background-color: black; */
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+    height: 35px;
+    width: 40px;
+    cursor: pointer;
+  }
+  
 .issue-top-row {
   display: flex;
   flex-direction: column;
