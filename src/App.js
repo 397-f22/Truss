@@ -33,6 +33,7 @@ const App = () => {
           projects={Object.values(data.projects)}
           projectID={projectID}
           setProjectID={setProjectID}
+          users={Object.values(data.users)}
         />
         <div className="page-content">
           <Routes>
@@ -56,7 +57,7 @@ const App = () => {
               element={<MessagesPage
                 issues={data.issues}
                 messages={data.messages}
-                users={data.users.slice(1)}
+                users={Object.values(data.users)}
               />}
             />
           </Routes>

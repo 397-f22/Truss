@@ -6,7 +6,7 @@ import ProjectModal from "./ProjectModal";
 import IssueCreator from "./IssueCreator";
 import ProjectCreator from "./ProjectCreator";
 import { useFormData } from "../utilities/useformdata";
-import { signInWithGoogle, signOut, useAuthState, } from '../utilities/firebase';
+import { signInWithGoogle, signOut, useAuthState, useDbUpdate } from '../utilities/firebase';
 
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -17,7 +17,8 @@ const Header = ({
   issues,
   projects,
   projectID,
-  setProjectID
+  setProjectID,
+  users
 }) => {
   const [open, setOpen] = useState(false);
   const [openProject, setOpenProject] = useState(false);
@@ -32,12 +33,37 @@ const Header = ({
   const issueCount = issues.length;
   const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
 
+  // export const useProfile = () => {
+  //   const [user] = useAuthState();
+  //   const [isAdmin, isLoading, error] = useDbData(`/admins/${user?.uid || 'guest'}`);
+  //   return [{ user, isAdmin }, isLoading, error];
+  // };
+
   const [user] = useAuthState();
+
+  const [update, result] = useDbUpdate(`users/${user?.uid || 'guest'}`)
+
+  if (user) {
+
+
+    const uid = user.uid;
+
+    if (!users.filter(user => user.uid === uid)) {
+      update({
+        display_name: user.displayName,
+        uid: uid,
+        email: user.email,
+        project_ids: []
+
+      }
+      )
+    }
+  }
 
   const SignInButton = () => (
     <button className="ms-auto btn " onClick={signInWithGoogle}>Sign in</button>
   );
-  
+
   const SignOutButton = () => (
     <button className="ms-auto btn " onClick={signOut}>Sign out</button>
   );
@@ -58,10 +84,10 @@ const Header = ({
           </div>
         </Link>
         {!projectID
-        ? <>
-          <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
+          ? <>
+            <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
           </>
-        : <>
+          : <>
             <div className="issues-type-container">
               {types.map((type, id) => (
                 <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
@@ -81,7 +107,7 @@ const Header = ({
             <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
           </>
         }
-        { user ? <SignOutButton /> : <SignInButton /> }
+        {user ? <SignOutButton /> : <SignInButton />}
       </div>
     </>
   );
