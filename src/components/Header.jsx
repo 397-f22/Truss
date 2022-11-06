@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import "./Header.css";
 import IssueModal from "./IssueModal";
@@ -6,6 +6,7 @@ import ProjectModal from "./ProjectModal";
 import IssueCreator from "./IssueCreator";
 import ProjectCreator from "./ProjectCreator";
 import { useFormData } from "../utilities/useformdata";
+import { signInWithGoogle, signOut, useAuthState, } from '../utilities/firebase';
 
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -30,6 +31,16 @@ const Header = ({
   const onClick = () => setProjectID(0);
   const issueCount = issues.length;
   const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
+
+  const [user] = useAuthState();
+
+  const SignInButton = () => (
+    <button className="ms-auto btn " onClick={signInWithGoogle}>Sign in</button>
+  );
+  
+  const SignOutButton = () => (
+    <button className="ms-auto btn " onClick={signOut}>Sign out</button>
+  );
 
   return (
     <>
@@ -70,6 +81,7 @@ const Header = ({
             <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
           </>
         }
+        { user ? <SignOutButton /> : <SignInButton /> }
       </div>
     </>
   );
