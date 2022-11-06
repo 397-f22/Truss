@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Header.css";
 import IssueModal from "./IssueModal";
 import ProjectModal from "./ProjectModal";
@@ -18,7 +18,8 @@ const Header = ({
   projects,
   projectID,
   setProjectID,
-  users
+  users,
+  setUser
 }) => {
   const [open, setOpen] = useState(false);
   const [openProject, setOpenProject] = useState(false);
@@ -40,25 +41,44 @@ const Header = ({
   // };
 
   const [user] = useAuthState();
-
-  const [update, result] = useDbUpdate(`users/${user?.uid || 'guest'}`)
-
-  if (user) {
-
-
-    const uid = user.uid;
-
-    if (!users.filter(user => user.uid === uid)) {
-      update({
-        display_name: user.displayName,
-        uid: uid,
-        email: user.email,
-        project_ids: []
-
-      }
-      )
-    }
+  let uid;
+  if(!user){
+    uid = 'guest';
   }
+  else{
+    uid = user.uid;
+  }
+
+  const [update, result] = useDbUpdate(`users/${uid}`)
+  if (users.filter(user => user.uid === uid).length === 0) {
+    update({
+      display_name: user.displayName,
+      uid: uid,
+      email: user.email,
+      project_ids: {}
+
+    }
+    )
+  }
+
+  // if (user) {
+  //   const uid = user.uid;
+
+  //   if (users.filter(user => user.uid === uid).length === 0) {
+  //     update({
+  //       display_name: user.displayName,
+  //       uid: uid,
+  //       email: user.email,
+  //       project_ids: []
+
+  //     }
+  //     )
+  //   }
+    
+  // }
+
+  useEffect ( () => { setUser(users.filter(user => user.uid === uid)[0]) }, [user] )
+  
 
   const SignInButton = () => (
     <button className="ms-auto btn " onClick={signInWithGoogle}>Sign in</button>
@@ -83,29 +103,33 @@ const Header = ({
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
-        {!projectID
-          ? <>
-            <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
-          </>
-          : <>
-            <div className="issues-type-container">
-              {types.map((type, id) => (
-                <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
-                  <div
-                    id={type}
-                    onClick={(e) => {
-                      if (type !== selectedType) {
-                        setSelectedType(e.target.id);
-                      };
-                    }}
-                  >
-                    {capitalize(type)}
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
-          </>
+        {user
+        ? 
+          (!projectID
+            ? <>
+              <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
+            </>
+            : <>
+              <div className="issues-type-container">
+                {types.map((type, id) => (
+                  <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
+                    <div
+                      id={type}
+                      onClick={(e) => {
+                        if (type !== selectedType) {
+                          setSelectedType(e.target.id);
+                        };
+                      }}
+                    >
+                      {capitalize(type)}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
+            </>
+          )
+        : <></>
         }
         {user ? <SignOutButton /> : <SignInButton />}
       </div>
