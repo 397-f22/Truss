@@ -19,6 +19,8 @@ const App = () => {
   const [data, error] = useDbData("/");
 
   useEffect(() => {
+    console.log(projectIDs)
+
     if (!data || !("users" in data) || !currentUser) {
       setProjectIDs([]);
       return;
@@ -56,6 +58,7 @@ const App = () => {
               element={<ProjectPage
                 projects={Object.values(data.projects)}
                 projectIDs={projectIDs}
+                setProjectIDs={setProjectIDs}
                 setProjectID={setProjectID}
                 currentUser={currentUser}
               />}

@@ -7,6 +7,9 @@ const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const IssuesPage = ({ projectIDs, selectedType, issues }) => {
   const { project_id } = useParams();
 
+  console.log(projectIDs)
+  console.log(project_id)
+
   if (!projectIDs.includes(parseInt(project_id))) {
     return <Navigate to="/" />;
   };

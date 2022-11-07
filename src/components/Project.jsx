@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDbUpdate } from "../utilities/firebase";
 import "./Project.css";
 
-const Project = ({ projectIDs, active, project, setProjectID, currentUser }) => {
+const Project = ({ active, projectIDs, setProjectIDs, project, setProjectID, currentUser }) => {
   const onClick = () => setProjectID(project.project_id);
 
   const uid = currentUser ? currentUser.uid : "guest";
@@ -20,6 +20,8 @@ const Project = ({ projectIDs, active, project, setProjectID, currentUser }) => 
       update({
         project_ids: [...projectIDs, project.project_id]
       });
+
+      setProjectIDs([...projectIDs, project.project_id]);
     } else {
       alert("Incorrect project code");
     };
@@ -34,6 +36,8 @@ const Project = ({ projectIDs, active, project, setProjectID, currentUser }) => 
     update({
       project_ids: projectIDs.filter(id => id !== project.project_id)
     });
+
+    setProjectIDs(projectIDs.filter(id => id !== project.project_id));
   };
 
   return (
