@@ -34,8 +34,8 @@ const Header = ({
   const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
 
   const uid = !currentUser ? "guest" : currentUser.uid;
-
   const [update, result] = useDbUpdate(`users/${uid}`);
+
   useEffect(() => {
     if (users.filter(user => user.uid === uid).length === 0) {
       update({
@@ -45,8 +45,6 @@ const Header = ({
       })
     };
   }, [currentUser]);
-
-  console.log("projectID:", projectID)
 
   const SignInButton = () => (
     <button className="ms-auto btn btn-outline-dark" onClick={signInWithGoogle}>Sign In</button>

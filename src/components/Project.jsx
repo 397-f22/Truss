@@ -3,7 +3,6 @@ import "./Project.css";
 
 
 const Project = ({ active, project, setProjectID }) => {
-
   const onClick = () => setProjectID(project.project_id);
 
   return (

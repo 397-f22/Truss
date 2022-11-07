@@ -1,11 +1,15 @@
 import "./IssuesPage.css";
 import Issue from "./Issue";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const IssuesPage = ({ selectedType, issues }) => {
+const IssuesPage = ({ projectIDs, selectedType, issues }) => {
   const { project_id } = useParams();
+
+  if (!projectIDs.includes(parseInt(project_id))) {
+    return <Navigate to="/" />;
+  };
 
   const filteredIssues = issues.filter(issue => issue.status === capitalize(selectedType) && issue.project_id === parseInt(project_id));
 
