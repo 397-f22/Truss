@@ -8,18 +8,21 @@ import IssuesPage from "./components/IssuesPage";
 import ProjectPage from "./components/ProjectPage";
 import './App.css'
 
-const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const projectIDs = [1001]; // hardcoded for now, will get from logged in user
+// const projectIDs = [1001]; // hardcoded for now, will get from logged in user
 
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
   const [projectID, setProjectID] = useState(0);
+  const [user, setUser] = useState();
 
   const [data, error] = useDbData("/");
 
   if (error) return <h1>Error loading data: {error.toString()}</h1>;
   if (data === undefined) return <h1>Loading data...</h1>;
   if (!data) return <h1>No data found</h1>;
+
+  const projectIDs = !user ? [] : !user.project_ids ? [] : user.project_ids
+
 
   return (
     <div>
@@ -31,6 +34,8 @@ const App = () => {
           projects={Object.values(data.projects)}
           projectID={projectID}
           setProjectID={setProjectID}
+          users={Object.values(data.users)}
+          setUser={setUser}
         />
         <div className="page-content">
           <Routes>
@@ -54,7 +59,7 @@ const App = () => {
               element={<MessagesPage
                 issues={data.issues}
                 messages={data.messages}
-                users={data.users.slice(1)}
+                users={Object.values(data.users)}
               />}
             />
           </Routes>
