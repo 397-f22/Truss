@@ -1,11 +1,12 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDbData } from './utilities/firebase';
 import Header from "./components/Header";
 import MessagesPage from "./components/MessagesPage";
 import IssuesPage from "./components/IssuesPage";
 import ProjectPage from "./components/ProjectPage";
+import { useAuthState, useDbUpdate } from "./utilities/firebase";
 import './App.css'
 
 // const projectIDs = [1001]; // hardcoded for now, will get from logged in user
@@ -13,16 +14,25 @@ import './App.css'
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
   const [projectID, setProjectID] = useState(0);
-  const [user, setUser] = useState();
-
+  const [currentUser] = useAuthState();
+  const [projectIDs, setProjectIDs] = useState([]);
   const [data, error] = useDbData("/");
+
+  useEffect(() => {
+    if (!data || !("users" in data) || !currentUser) {
+      return;
+    };
+
+    const currentUserFirebase = Object.values(data.users).filter(user => user.uid === currentUser.uid)[0];
+
+    if (currentUserFirebase && "project_ids" in currentUserFirebase) {
+      setProjectIDs(Object.values(currentUserFirebase.project_ids));
+    };
+  }, [currentUser, data])
 
   if (error) return <h1>Error loading data: {error.toString()}</h1>;
   if (data === undefined) return <h1>Loading data...</h1>;
   if (!data) return <h1>No data found</h1>;
-
-  const projectIDs = !user ? [] : !user.project_ids ? [] : user.project_ids
-
 
   return (
     <div>
@@ -35,7 +45,8 @@ const App = () => {
           projectID={projectID}
           setProjectID={setProjectID}
           users={Object.values(data.users)}
-          setUser={setUser}
+          currentUser={currentUser}
+          projectIDs={projectIDs}
         />
         <div className="page-content">
           <Routes>

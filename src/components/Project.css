@@ -13,6 +13,11 @@
   border-radius: 10px;
 }
 
+.project-container-inactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .project-name {
   font-size: 20px;
   font-weight: 700;

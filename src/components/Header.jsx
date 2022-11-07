@@ -19,7 +19,7 @@ const Header = ({
   projectID,
   setProjectID,
   users,
-  setUser
+  currentUser
 }) => {
   const [open, setOpen] = useState(false);
   const [openProject, setOpenProject] = useState(false);
@@ -30,62 +30,30 @@ const Header = ({
   const openModalProject = () => setOpenProject(true);
   const closeModalProject = () => setOpenProject(false);
 
-  const onClick = () => setProjectID(0);
   const issueCount = issues.length;
   const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
 
-  // export const useProfile = () => {
-  //   const [user] = useAuthState();
-  //   const [isAdmin, isLoading, error] = useDbData(`/admins/${user?.uid || 'guest'}`);
-  //   return [{ user, isAdmin }, isLoading, error];
-  // };
+  const uid = !currentUser ? "guest" : currentUser.uid;
 
-  const [user] = useAuthState();
-  let uid;
-  if(!user){
-    uid = 'guest';
-  }
-  else{
-    uid = user.uid;
-  }
+  const [update, result] = useDbUpdate(`users/${uid}`);
+  useEffect(() => {
+    if (users.filter(user => user.uid === uid).length === 0) {
+      update({
+        display_name: currentUser.displayName,
+        uid: uid,
+        email: currentUser.email,
+      })
+    };
+  }, [currentUser]);
 
-  const [update, result] = useDbUpdate(`users/${uid}`)
-  if (users.filter(user => user.uid === uid).length === 0) {
-    update({
-      display_name: user.displayName,
-      uid: uid,
-      email: user.email,
-      project_ids: {}
-
-    }
-    )
-  }
-
-  // if (user) {
-  //   const uid = user.uid;
-
-  //   if (users.filter(user => user.uid === uid).length === 0) {
-  //     update({
-  //       display_name: user.displayName,
-  //       uid: uid,
-  //       email: user.email,
-  //       project_ids: []
-
-  //     }
-  //     )
-  //   }
-    
-  // }
-
-  useEffect ( () => { setUser(users.filter(user => user.uid === uid)[0]) }, [user] )
-  
+  console.log("projectID:", projectID)
 
   const SignInButton = () => (
-    <button className="ms-auto btn " onClick={signInWithGoogle}>Sign in</button>
+    <button className="ms-auto btn btn-outline-dark" onClick={signInWithGoogle}>Sign In</button>
   );
 
   const SignOutButton = () => (
-    <button className="ms-auto btn " onClick={signOut}>Sign out</button>
+    <button className="ms-auto btn btn-outline-dark" onClick={signOut}>Sign Out</button>
   );
 
   return (
@@ -99,17 +67,18 @@ const Header = ({
       <div className="header">
         <Link className="app-title-link" to="/">
           <div
-            onClick={onClick}
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
-        {user
-        ? 
+        {currentUser
+        ?
           (!projectID
-            ? <>
+            ?
+            <>
               <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
             </>
-            : <>
+            :
+            <>
               <div className="issues-type-container">
                 {types.map((type, id) => (
                   <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
@@ -131,7 +100,7 @@ const Header = ({
           )
         : <></>
         }
-        {user ? <SignOutButton /> : <SignInButton />}
+        {currentUser ? <SignOutButton /> : <SignInButton />}
       </div>
     </>
   );
