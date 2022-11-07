@@ -6,10 +6,8 @@ import Header from "./components/Header";
 import MessagesPage from "./components/MessagesPage";
 import IssuesPage from "./components/IssuesPage";
 import ProjectPage from "./components/ProjectPage";
-import { useAuthState, useDbUpdate } from "./utilities/firebase";
-import './App.css'
-
-// const projectIDs = [1001]; // hardcoded for now, will get from logged in user
+import { useAuthState, } from "./utilities/firebase";
+import './App.css';
 
 const App = () => {
   const [selectedType, setSelectedType] = useState("todo");
@@ -19,8 +17,6 @@ const App = () => {
   const [data, error] = useDbData("/");
 
   useEffect(() => {
-    console.log(projectIDs)
-
     if (!data || !("users" in data) || !currentUser) {
       setProjectIDs([]);
       return;
@@ -46,7 +42,6 @@ const App = () => {
           issues={Object.values(data.issues)}
           projects={Object.values(data.projects)}
           projectID={projectID}
-          setProjectID={setProjectID}
           users={Object.values(data.users)}
           currentUser={currentUser}
           projectIDs={projectIDs}

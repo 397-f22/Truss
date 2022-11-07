@@ -3,9 +3,6 @@ import { useDbUpdate } from '../utilities/firebase'
 import { useParams } from 'react-router-dom'
 
 const MessageField = ({ change }) => {
-    // need to generate an id (use hash function)
-    // get issue ID from url
-
     const issueID = Object.values(useParams())[0];
     const time = new Date();
     const userID = "1";

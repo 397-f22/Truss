@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Header.css";
 import IssueModal from "./IssueModal";
@@ -6,7 +6,7 @@ import ProjectModal from "./ProjectModal";
 import IssueCreator from "./IssueCreator";
 import ProjectCreator from "./ProjectCreator";
 import { useFormData } from "../utilities/useformdata";
-import { signInWithGoogle, signOut, useAuthState, useDbUpdate } from '../utilities/firebase';
+import { signInWithGoogle, signOut, useDbUpdate } from '../utilities/firebase';
 
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -17,7 +17,6 @@ const Header = ({
   issues,
   projects,
   projectID,
-  setProjectID,
   users,
   currentUser
 }) => {

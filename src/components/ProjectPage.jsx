@@ -1,9 +1,6 @@
 import "./ProjectPage.css";
 import Project from "./Project";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-
-const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const ProjectPage = ({ projects, projectIDs, setProjectIDs, setProjectID, currentUser }) => {
   useEffect(() => {

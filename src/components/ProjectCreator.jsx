@@ -1,6 +1,4 @@
 import { useDbUpdate } from '../utilities/firebase'
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 import "./IssueCreator.css";
 
 const ProjectCreator = ({ change, closeModal, projectID}) => {
