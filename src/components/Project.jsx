@@ -1,13 +1,49 @@
 import { Link } from "react-router-dom";
+import { useDbUpdate } from "../utilities/firebase";
 import "./Project.css";
 
-
-const Project = ({ active, project, setProjectID }) => {
+const Project = ({ projectIDs, active, project, setProjectID, currentUser }) => {
   const onClick = () => setProjectID(project.project_id);
+
+  const uid = currentUser ? currentUser.uid : "guest";
+  const [update, result] = useDbUpdate(`users/${uid}`);
+
+  const promptForCode = () => {
+    if (!currentUser) {
+      alert("Please login first");
+      return;
+    }
+
+    const codeEntered = prompt("Enter project code");
+
+    if (parseInt(codeEntered) === project.project_id) {
+      update({
+        project_ids: [...projectIDs, project.project_id]
+      });
+    } else {
+      alert("Incorrect project code");
+    };
+  };
+
+  const leaveProject = () => {
+    if (!currentUser) {
+      alert("Please login first");
+      return;
+    }
+
+    update({
+      project_ids: projectIDs.filter(id => id !== project.project_id)
+    });
+  };
 
   return (
     <div className={`project-container ${active ? '' : 'project-container-inactive'}`}>
-      <Link to={`/${project.project_id}`}>
+      {
+        active
+        ? <div className="button leave-button" onClick={leaveProject}>Leave Project</div>
+        : <div className="button join-button" onClick={promptForCode}>Join Project</div>
+      }
+      <Link className={`${active ? '' : 'link-inactive'}`} to={`/${project.project_id}`}>
         <div onClick={onClick} className="project-name">{project.name}</div>
       </Link>
     </div>

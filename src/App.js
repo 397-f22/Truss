@@ -56,6 +56,7 @@ const App = () => {
                 projects={Object.values(data.projects)}
                 projectIDs={projectIDs}
                 setProjectID={setProjectID}
+                currentUser={currentUser}
               />}
             />
             <Route

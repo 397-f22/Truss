@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const ProjectPage = ({ projects, projectIDs, setProjectID }) => {
+const ProjectPage = ({ projects, projectIDs, setProjectID, currentUser }) => {
   useEffect(() => {
     setProjectID(0)
   }, []);
@@ -16,9 +16,11 @@ const ProjectPage = ({ projects, projectIDs, setProjectID }) => {
         {projects.map((project, id) => (
           <Project
             key={id}
+            projectIDs={projectIDs}
             active={projectIDs.includes(project.project_id)}
             project={project}
             setProjectID={setProjectID}
+            currentUser={currentUser}
           />
         ))}
       </div>
