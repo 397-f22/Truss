@@ -20,6 +20,7 @@ const App = () => {
 
   useEffect(() => {
     if (!data || !("users" in data) || !currentUser) {
+      setProjectIDs([]);
       return;
     };
 
