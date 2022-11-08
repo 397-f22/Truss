@@ -2,10 +2,10 @@ import './MessageField.css'
 import { useDbUpdate } from '../utilities/firebase'
 import { useParams } from 'react-router-dom'
 
-const MessageField = ({ change }) => {
+const MessageField = ({ change, currentUser }) => {
     const issueID = Object.values(useParams())[0];
     const time = new Date();
-    const userID = "1";
+    const userID = currentUser.uid;
     const messageID = `${userID}${time.getTime()}`
 
     const [update, result] = useDbUpdate(`/messages/${messageID}`)

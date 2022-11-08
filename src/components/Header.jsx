@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./Header.css";
-import IssueModal from "./IssueModal";
-import ProjectModal from "./ProjectModal";
-import IssueCreator from "./IssueCreator";
-import ProjectCreator from "./ProjectCreator";
-import { useFormData } from "../utilities/useformdata";
 import { signInWithGoogle, signOut, useDbUpdate } from '../utilities/firebase';
 
 const types = ["backlog", "todo", "done"]
@@ -14,25 +9,11 @@ const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const Header = ({
   selectedType,
   setSelectedType,
-  issues,
   projects,
   projectID,
-  projectIDs,
   users,
   currentUser
 }) => {
-  const [open, setOpen] = useState(false);
-  const [openProject, setOpenProject] = useState(false);
-  const [state, change] = useFormData();
-
-  const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
-  const openModalProject = () => setOpenProject(true);
-  const closeModalProject = () => setOpenProject(false);
-
-  const issueCount = issues.length;
-  const issueNumber = issues.filter(issue => issue.project_id === projectID).length;
-
   const uid = !currentUser ? "guest" : currentUser.uid;
   const [update, result] = useDbUpdate(`users/${uid}`);
 
@@ -63,7 +44,7 @@ const Header = ({
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
-        {currentUser
+        {currentUser && projectID
           ?
           (
             <>

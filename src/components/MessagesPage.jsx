@@ -3,7 +3,7 @@ import "./MessagesPage.css";
 import MessageField from "./MessageField";
 import { useFormData } from "../utilities/useformdata";
 
-const MessagesPage = ({ issues, messages, users }) => {
+const MessagesPage = ({ issues, messages, users,currentUser }) => {
   const { id } = useParams();
 
   const findUserDisplayName = (uid) => Object.values(users).filter(user => user.uid === uid)[0].display_name;
@@ -20,15 +20,18 @@ const MessagesPage = ({ issues, messages, users }) => {
       </div>
       <div className="text-chat" id="text-chat">
         {
-          filteredMessages.map((message, id) => (
-            <div key={id} className="message">
+          filteredMessages.map((message, id) => {
+            let time = new Date(message.date)
+            return(
+            <div key={id} className={message.uid === currentUser.uid ? `current-user-message`:`message`}>
               <div className="user-name">{findUserDisplayName(message.uid)}</div>
               <div className="message-text">{message.contents}</div>
-            </div>))
+              <div>{time.toDateString()} {time.toLocaleTimeString()} </div>
+            </div>)})
         }
       </div>
       <div className="message-field">
-        <MessageField change={change} />
+        <MessageField currentUser={currentUser}change={change} />
       </div>
     </div>
   );

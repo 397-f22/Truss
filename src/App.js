@@ -39,12 +39,10 @@ const App = () => {
         <Header
           selectedType={selectedType}
           setSelectedType={setSelectedType}
-          issues={Object.values(data.issues)}
           projects={Object.values(data.projects)}
           projectID={projectID}
           users={Object.values(data.users)}
           currentUser={currentUser}
-          projectIDs={projectIDs}
         />
         <div className="page-content">
           <Routes>
@@ -71,6 +69,7 @@ const App = () => {
                 issues={data.issues}
                 messages={data.messages}
                 users={Object.values(data.users)}
+                currentUser={currentUser}
               />}
             />
           </Routes>
