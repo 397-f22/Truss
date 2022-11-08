@@ -7,8 +7,9 @@ const MessagesPage = ({ issues, messages, users,currentUser }) => {
   const { id } = useParams();
 
   const findUserDisplayName = (uid) => Object.values(users).filter(user => user.uid === uid)[0].display_name;
+  let sortedMessage
   const issueData = Object.values(issues).filter(issue => parseInt(issue.issue_id) === parseInt(id))[0];
-  const filteredMessages = Object.values(messages).filter(message => message.issue_id === id);
+  const filteredMessages = Object.values(messages).filter(message => message.issue_id === id).sort((message1,message2) => (new Date(message1.date)).getTime() - (new Date(message2.date)).getTime());
   const [state, change] = useFormData();
 
   return (
