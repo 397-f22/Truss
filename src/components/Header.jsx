@@ -17,6 +17,7 @@ const Header = ({
   issues,
   projects,
   projectID,
+  projectIDs,
   users,
   currentUser
 }) => {
@@ -59,7 +60,13 @@ const Header = ({
         <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} issueNumber={issueNumber + 1} projectID={projectID} />
       </IssueModal>
       <ProjectModal open={openProject} close={closeModalProject}>
-        <ProjectCreator change={change} closeModal={closeModalProject} projectID={projects.length + 1001} />
+        <ProjectCreator
+          change={change}
+          closeModal={closeModalProject}
+          projectIDs={projectIDs}
+          projectID={projects.length + 1001}
+          currentUser={currentUser}
+        />
       </ProjectModal>
       <div className="header">
         <Link className="app-title-link" to="/">
@@ -68,7 +75,7 @@ const Header = ({
           </div>
         </Link>
         {currentUser
-        ?
+          ?
           (!projectID
             ?
             <>
@@ -95,7 +102,7 @@ const Header = ({
               <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
             </>
           )
-        : <></>
+          : <></>
         }
         {currentUser ? <SignOutButton /> : <SignInButton />}
       </div>
