@@ -2,8 +2,11 @@ import { useDbUpdate } from '../utilities/firebase'
 import "./IssueCreator.css";
 
 const ProjectCreator = ({ change, closeModal, projectIDs, projectID, currentUser}) => {
+    
+    const uid = !currentUser ? "guest" : currentUser.uid;
     const [update, result] = useDbUpdate(`/projects/${projectID}`)
-    const [userUpdate, userResult] = useDbUpdate(`/users/${currentUser.uid}`)
+    const [userUpdate, userResult] = useDbUpdate(`/users/${uid}`)
+
 
     const submit = (e) => {
         if(e.target[0].value === ''){}
