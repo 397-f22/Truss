@@ -25,9 +25,9 @@ const Issue = ({ issue, selectedType }) => {
       <Link to={`/issues/${issue.issue_id}`}>
         <ChatBubble />
       </Link>
-      <div className='archive-button' onClick={archive}>
+      { selectedType !== 'Archived' && <div className='archive-button' onClick={archive}>
         <FontAwesomeIcon icon={faArchive} />
-      </div>
+      </div>}
       <div className="issue-number">Issue #{issue.issue_id}</div>
       <div className="issue-contents">{issue.contents}</div>
       <div className="move-issue-text">Move Issue To:</div>
