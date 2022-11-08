@@ -59,6 +59,7 @@ const App = () => {
             <Route
               path="/:project_id"
               element={<IssuesPage
+                setSelectedType={setSelectedType}
                 selectedType={selectedType}
                 issues={Object.values(data.issues)}
               />}

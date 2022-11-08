@@ -8,7 +8,7 @@ import IssueCreator from "./IssueCreator";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-const IssuesPage = ({ selectedType, issues }) => {
+const IssuesPage = ({ selectedType,setSelectedType, issues }) => {
   const { project_id } = useParams();
 
   const filteredIssues = issues.filter(issue => issue.status === capitalize(selectedType) && issue.project_id === parseInt(project_id));
@@ -19,6 +19,7 @@ const IssuesPage = ({ selectedType, issues }) => {
   const [state, change] = useFormData();
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+  const openArchive = () => setSelectedType('Archived')
 
   return (
     <div>
@@ -31,6 +32,8 @@ const IssuesPage = ({ selectedType, issues }) => {
         ))}
       </div>
       <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
+      <button className="btn btn-outline-dark" onClick={openArchive}>Archive</button>
+
     </div>
   );
 };
