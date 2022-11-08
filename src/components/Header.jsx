@@ -56,9 +56,6 @@ const Header = ({
 
   return (
     <>
-      <IssueModal open={open} close={closeModal}>
-        <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} issueNumber={issueNumber + 1} projectID={projectID} />
-      </IssueModal>
       
       <div className="header">
         <Link className="app-title-link" to="/">
@@ -86,7 +83,6 @@ const Header = ({
                   </Link>
                 ))}
               </div>
-              <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
             </>
           )
           : <></>
