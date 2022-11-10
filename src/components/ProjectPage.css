@@ -11,9 +11,17 @@
     margin-top: 25px;
   }
 
-.btn {
-    height: 8vw;
-    width: 8vw;
+.add-project {
+    height: 40px;
+    width: 40px;
     border-radius: 50% !important;
     font-size: 20px !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding: 0 !important;
+    box-shadow: 0px 4px 4px lightgrey;
 }
