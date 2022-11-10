@@ -5,6 +5,8 @@ import { Navigate, useParams } from "react-router-dom";
 import { useFormData } from "../utilities/useformdata";
 import IssueModal from "./IssueModal";
 import IssueCreator from "./IssueCreator";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArchive } from "@fortawesome/free-solid-svg-icons";
 
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -40,8 +42,10 @@ const IssuesPage = ({ selectedType, setSelectedType, issues }) => {
           <Issue key={id} issue={issue} selectedType={selectedType} />
         ))}
       </div>
-      <button className="btn btn-outline-dark" onClick={openModal}>Add Issue</button>
-      <button className="btn btn-outline-dark" onClick={openArchiveModal}>Archive</button>
+      <button className="btn btn-outline-dark add-issue" onClick={openModal}>+</button>
+      <button className="btn btn-outline-dark archive-issue" onClick={openArchiveModal}>
+        <FontAwesomeIcon icon={faArchive} />
+      </button>
 
     </div>
   );
