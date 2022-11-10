@@ -1,0 +1,19 @@
+.projects-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+
+.projects-list-container > div {
+    margin-top: 25px;
+  }
+
+.btn {
+    height: 8vw;
+    width: 8vw;
+    border-radius: 50% !important;
+    font-size: 20px !important;
+}

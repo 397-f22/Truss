@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "./Header.css";
 import { signInWithGoogle, signOut, useDbUpdate } from '../utilities/firebase';
 
+
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -32,7 +33,9 @@ const Header = ({
   );
 
   const SignOutButton = () => (
-    <button className="ms-auto btn btn-outline-dark" onClick={signOut}>Sign Out</button>
+    <Link to="/">
+      <button className="ms-auto btn btn-outline-dark" onClick={signOut}>Sign Out</button>
+    </Link>
   );
 
   return (
@@ -68,6 +71,7 @@ const Header = ({
           )
           : <></>
         }
+
         {currentUser ? <SignOutButton /> : <SignInButton />}
       </div>
     </>

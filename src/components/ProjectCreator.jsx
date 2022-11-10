@@ -14,6 +14,7 @@ const ProjectCreator = ({ change, closeModal, projectIDs, projectID, currentUser
         e.preventDefault();
         update({
             name: e.target[0].value,
+            description: e.target[1].value,
             project_id: projectID
         });
         userUpdate({
@@ -27,6 +28,7 @@ const ProjectCreator = ({ change, closeModal, projectIDs, projectID, currentUser
     return (
       <form id="issue-form" className="issue-form" onSubmit={submit}>
         <input className="issue-field" placeholder="Enter Project Name" onChange={change} />
+        <input className="issue-field" placeholder="Enter Project Description" onChange={change} />
         <button className="issue-submit" type="submit">Add New Project</button>
       </form>
     );

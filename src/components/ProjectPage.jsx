@@ -40,10 +40,11 @@ const ProjectPage = ({ projects, projectIDs, setProjectIDs, setProjectID, curren
         ))}
       </div>
 
-
+      {currentUser &&
       <>
-        <button className="btn btn-outline-dark" onClick={openModalProject}>Add Project</button>
+        <button className="btn btn-outline-dark" onClick={openModalProject}>+</button>
       </>
+      }
 
     </div>
   );
