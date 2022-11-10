@@ -21,7 +21,7 @@ const Issue = ({ issue, selectedType }) => {
     });
   };
   return (
-    <div className="issue-container">
+    <div className={selectedType === "Archived" ? `issue-container`:`issue-container issue-page-container`}>
       <Link to={`/issues/${issue.issue_id}`}>
         <ChatBubble />
       </Link>

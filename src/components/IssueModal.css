@@ -21,6 +21,7 @@
 
 .modal-content  {
   opacity: 0;
+  width: fit-content;
 }
 
 .modal-show .modal-content  {
