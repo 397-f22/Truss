@@ -44,12 +44,17 @@ const Project = ({ active, projectIDs, setProjectIDs, project, setProjectID, cur
     <div className={`project-container ${active ? '' : 'project-container-inactive'}`}>
       {
         active
-        ? <div className="button leave-button" onClick={leaveProject}>Leave Project</div>
-        : <div className="button join-button" onClick={promptForCode}>Join Project</div>
+          ? <div className="button leave-button" onClick={leaveProject}>Leave</div>
+          : <div className="button join-button" onClick={promptForCode}>Join</div>
       }
-      <Link className={`${active ? '' : 'link-inactive'}`} to={`/${project.project_id}`}>
-        <div onClick={onClick} className="project-name">{project.name}</div>
-      </Link>
+      {uid !== "guest"
+        ? <Link to={`/${project.project_id}`}>
+          <div onClick={onClick} className="project-name">{project.name}</div>
+        </Link>
+        : <div className="project-name">{project.name}</div>
+      }
+
+      <div className="project-description">{project.description}</div>
     </div>
   );
 };

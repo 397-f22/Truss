@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "./Header.css";
 import { signInWithGoogle, signOut, useDbUpdate } from '../utilities/firebase';
 
+
 const types = ["backlog", "todo", "done"]
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -32,22 +33,29 @@ const Header = ({
   );
 
   const SignOutButton = () => (
-    <button className="ms-auto btn btn-outline-dark" onClick={signOut}>Sign Out</button>
+    <Link to="/">
+      <button className="ms-auto btn btn-outline-dark" onClick={signOut}>Sign Out</button>
+    </Link>
   );
 
   return (
     <>
       
       <div className="header">
+        <div className="top-header">
         <Link className="app-title-link" to="/">
           <div
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
+        
+
+        {currentUser ? <SignOutButton /> : <SignInButton />}
+      </div>
         {currentUser && projectID
           ?
           (
-            <>
+            
               <div className="issues-type-container">
                 {types.map((type, id) => (
                   <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
@@ -64,12 +72,12 @@ const Header = ({
                   </Link>
                 ))}
               </div>
-            </>
+            
           )
           : <></>
         }
-        {currentUser ? <SignOutButton /> : <SignInButton />}
       </div>
+      
     </>
   );
 };
