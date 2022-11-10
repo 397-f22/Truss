@@ -1,3 +1,6 @@
+.message-page {
+  margin-top: 50px;
+}
 .message {
   display: flex;
   flex-direction: column;

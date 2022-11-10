@@ -1,3 +1,6 @@
+.issue-page{
+  padding-top: 50px;
+}
 .issues-list-container {
   display: flex;
   flex-direction: column;
@@ -7,6 +10,10 @@
 }
 
 .issues-list-container > div {
+  margin-top: 25px;
+}
+
+.issues-modal-container > div {
   margin-top: 25px;
 }
 
@@ -38,4 +45,9 @@
     bottom: 10px;
     padding: 0 !important;
     box-shadow: 0px 4px 4px lightgrey;
+}
+
+.project-number-header {
+  margin: auto;
+  text-align: center;
 }

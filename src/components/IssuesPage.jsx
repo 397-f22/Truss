@@ -27,15 +27,17 @@ const IssuesPage = ({ selectedType, setSelectedType, issues }) => {
   const closeArchiveModal = () => setArchiveOpen(false)
 
   return (
-    <div>
+    <div className="issue-page">
       <div className="project-number-header">Project Code: {project_id}</div>
       <IssueModal title={'Create New Issue'} open={open} close={closeModal}>
         <IssueCreator change={change} closeModal={closeModal} issueID={issueCount + 1} issueNumber={issueNumber + 1} projectID={parseInt(project_id)} />
       </IssueModal>
       <IssueModal title={'Archived Issues'} open={openArchive} close={closeArchiveModal}>
-        {filteredArchiveIssues.map((issue, id) => (
-          <Issue key={id} issue={issue} selectedType={'Archived'} />
-        ))}
+        <div className="issues-modal-container">
+          {filteredArchiveIssues.map((issue, id) => (
+            <Issue key={id} issue={issue} selectedType={'Archived'} />
+          ))}
+        </div>
       </IssueModal>
       <div className="issues-list-container">
         {filteredIssues.map((issue, id) => (

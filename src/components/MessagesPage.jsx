@@ -13,7 +13,7 @@ const MessagesPage = ({ issues, messages, users,currentUser }) => {
   const [state, change] = useFormData();
 
   return (
-    <div>
+    <div className="message-page">
       <div className="issue-data-display">
         <div className="issue-number-header">Issue #{issueData.issue_id}</div>
         <div>{issueData.contents}</div>
