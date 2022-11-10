@@ -7,6 +7,7 @@ const Project = ({ active, projectIDs, setProjectIDs, project, setProjectID, cur
 
   const uid = currentUser ? currentUser.uid : "guest";
   const [update, result] = useDbUpdate(`users/${uid}`);
+  // console.log(users[currentUser.uid])
 
   const promptForCode = () => {
     if (!currentUser) {
@@ -47,7 +48,7 @@ const Project = ({ active, projectIDs, setProjectIDs, project, setProjectID, cur
           ? <div className="button leave-button" onClick={leaveProject}>Leave</div>
           : <div className="button join-button" onClick={promptForCode}>Join</div>
       }
-      {uid !== "guest"
+      {uid !== "guest" && active
         ? <Link to={`/${project.project_id}`}>
           <div onClick={onClick} className="project-name">{project.name}</div>
         </Link>
