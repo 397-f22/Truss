@@ -28,7 +28,7 @@ const Issue = ({ issue, selectedType }) => {
       { selectedType !== 'Archived' && <div className='archive-button' onClick={archive}>
         <FontAwesomeIcon icon={faArchive} />
       </div>}
-      <div className="issue-number">Issue #{issue.issue_id}</div>
+      <div className="issue-number">Issue #{issue.issue_number}</div>
       <div className="issue-contents">{issue.contents}</div>
       <div className="move-issue-text">Move Issue To:</div>
       <div className="issue-buttons-container">
