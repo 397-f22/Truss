@@ -22,12 +22,12 @@
 
 .project-container-inactive {
   background-color: rgb(239, 239, 239, 0.5);
-  cursor: not-allowed;
+  
 }
 
 .link-inactive {
   opacity: 0.5;
-  cursor: not-allowed;
+  
 }
 
 .button {
