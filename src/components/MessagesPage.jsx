@@ -15,7 +15,7 @@ const MessagesPage = ({ issues, messages, users,currentUser }) => {
   return (
     <div className="message-page">
       <div className="issue-data-display">
-        <div className="issue-number-header">Issue #{issueData.issue_id}</div>
+        <div className="issue-number-header">Issue #{issueData.issue_number}</div>
         <div>{issueData.contents}</div>
         <div>Status: {issueData.status}</div>
       </div>
