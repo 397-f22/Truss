@@ -42,15 +42,20 @@ const Header = ({
     <>
       
       <div className="header">
+        <div className="top-header">
         <Link className="app-title-link" to="/">
           <div
             className="app-title">{projectID ? `Truss: ${projects.filter(project => project.project_id === projectID)[0].name}` : "Truss"}
           </div>
         </Link>
+        
+
+        {currentUser ? <SignOutButton /> : <SignInButton />}
+      </div>
         {currentUser && projectID
           ?
           (
-            <>
+            
               <div className="issues-type-container">
                 {types.map((type, id) => (
                   <Link className={`issues-type ${(type === selectedType) ? "issues-type-active" : ""}`} to={`/${projectID}`} key={id}>
@@ -67,13 +72,12 @@ const Header = ({
                   </Link>
                 ))}
               </div>
-            </>
+            
           )
           : <></>
         }
-
-        {currentUser ? <SignOutButton /> : <SignInButton />}
       </div>
+      
     </>
   );
 };
